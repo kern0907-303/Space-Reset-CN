@@ -24,7 +24,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family:
-    Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
+    Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui,
     sans-serif;
   line-height: 1.6;
 }
@@ -182,6 +182,22 @@ h1 {
   font-size: clamp(2.5rem, 6vw, 5.2rem);
   line-height: 1.02;
   letter-spacing: 0;
+}
+
+/* 單行標題：不斷行，字級隨寬度縮放 */
+#hero-title,
+#difference .section-heading h2 {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+#hero-title {
+  max-width: none;
+  font-size: clamp(1.55rem, 7.4vw, 5.2rem);
+}
+
+#difference .section-heading h2 {
+  font-size: clamp(0.95rem, 5vw, 3.2rem);
 }
 
 h2 {
@@ -486,6 +502,10 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.deliverable-list.four-up {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .simple-steps article,
 .comparison-grid article,
 .deliverable-list article,
@@ -514,11 +534,16 @@ h3 {
 
 .simple-steps p,
 .comparison-grid p,
+.deliverable-list p,
 .inspection-card p,
 .inspection-card li,
 .delivery-note,
 .upgrade-line {
   color: var(--muted);
+}
+
+.deliverable-list p {
+  margin: 14px 0 0;
 }
 
 .comparison-grid {
@@ -544,6 +569,14 @@ h3 {
   background: var(--white);
   font-weight: 800;
   text-align: center;
+}
+
+.proof-grid {
+  margin-top: 24px;
+}
+
+.proof-grid .trust-card {
+  min-height: 220px;
 }
 
 .focused-pricing {
@@ -583,6 +616,46 @@ h3 {
   margin-top: auto;
 }
 
+.action-box {
+  display: flex;
+  max-width: 980px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin: 28px auto 0;
+  border: 1px solid rgba(30, 107, 85, 0.3);
+  border-radius: 8px;
+  padding: 28px 30px;
+  background: #f7fbf8;
+  box-shadow: 0 14px 36px rgba(24, 33, 31, 0.06);
+}
+
+.action-box > div {
+  max-width: 680px;
+}
+
+.action-box span {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--clay);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.action-box h3,
+.action-box p {
+  margin: 0;
+}
+
+.action-box p {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.action-box .button {
+  flex: 0 0 auto;
+}
+
 .three-faq {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -603,6 +676,10 @@ h3 {
   display: block;
   height: 0;
   scroll-margin-top: 76px;
+}
+
+.mobile-cta {
+  display: none;
 }
 
 .trust-card {
@@ -1657,6 +1734,279 @@ h3 {
   text-underline-offset: 4px;
 }
 
+/* ---- 圖片直接上傳 ---- */
+.uploader {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.uploader-field {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--paper);
+}
+
+.uploader-label {
+  display: block;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.uploader-hint {
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.uploader input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.uploader-drop {
+  display: grid;
+  gap: 4px;
+  place-items: center;
+  border: 1.5px dashed var(--line);
+  border-radius: 8px;
+  padding: 22px 18px;
+  background: var(--white);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.uploader-drop strong {
+  color: var(--green);
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.uploader-drop small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.uploader-drop:hover,
+.uploader-drop.is-dragging {
+  border-color: var(--green);
+  background: var(--soft);
+}
+
+.uploader input[type="file"]:focus-visible + .uploader-drop {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.uploader-list {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uploader-list:empty {
+  display: none;
+}
+
+.uploader-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: var(--white);
+  font-size: 0.86rem;
+}
+
+.uploader-file-name {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uploader-file-size {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.uploader-remove {
+  flex: 0 0 auto;
+  border: 0;
+  padding: 2px 4px;
+  background: none;
+  color: var(--clay);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.uploader-remove:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 861px) {
+  .uploader {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- FAQ 手風琴 ---- */
+details.faq-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+details.faq-item > summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  color: var(--ink);
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.5;
+  cursor: pointer;
+  list-style: none;
+}
+
+details.faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq-item > summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--green);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.2;
+  transition: transform 0.18s ease;
+}
+
+details.faq-item[open] > summary::after {
+  content: "−";
+}
+
+details.faq-item > summary:hover {
+  color: var(--green);
+}
+
+details.faq-item > p {
+  margin: 0;
+  padding: 0 26px 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+details.faq-item > p a {
+  color: var(--green);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+/* ---- 退款保證 ---- */
+.guarantee {
+  display: flex;
+  max-width: 980px;
+  align-items: flex-start;
+  gap: 22px;
+  margin: 30px auto 0;
+  border: 2px solid var(--green);
+  border-radius: 10px;
+  padding: 26px 28px;
+  background: var(--white);
+  box-shadow: 0 18px 44px rgba(30, 107, 85, 0.12);
+}
+
+.guarantee-seal {
+  display: grid;
+  flex: 0 0 auto;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  color: var(--green);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.guarantee h3 {
+  margin: 0 0 8px;
+  font-size: 1.18rem;
+  line-height: 1.4;
+}
+
+.guarantee p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+/* ---- 保障勳章 ---- */
+.badge-row {
+  display: flex;
+  max-width: 980px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto 0;
+}
+
+.badge {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 16px 9px 34px;
+  background: var(--white);
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.badge::before {
+  content: "✓";
+  position: absolute;
+  left: 14px;
+  color: var(--green);
+  font-weight: 900;
+}
+
+@media (max-width: 640px) {
+  .guarantee {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  details.faq-item > summary {
+    padding: 18px 20px;
+    font-size: 0.98rem;
+  }
+
+  details.faq-item > p {
+    padding: 16px 20px 20px;
+  }
+}
+
 @media (max-width: 640px) {
   .form-grid {
     grid-template-columns: 1fr;
@@ -1757,6 +2107,11 @@ h3 {
     flex-direction: column;
   }
 
+  .action-box {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
   .quiz-handoff {
     align-items: flex-start;
     flex-direction: column;
@@ -1810,7 +2165,7 @@ h3 {
   }
 
   .price-row > strong:nth-child(3)::before {
-    content: "商业空间";
+    content: "商業空間";
   }
 
   .pricing-cta {
@@ -1843,6 +2198,28 @@ h3 {
     padding-bottom: 44px;
   }
 
+  body {
+    padding-bottom: 70px;
+  }
+
+  .mobile-cta {
+    position: fixed;
+    right: 14px;
+    bottom: 12px;
+    left: 14px;
+    z-index: 30;
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--green);
+    color: var(--white);
+    box-shadow: 0 14px 30px rgba(18, 67, 52, 0.32);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
   .hero-lede {
     margin-top: 18px;
     font-size: 1.02rem;
@@ -1871,6 +2248,10 @@ h3 {
   .trust-card,
   .quiz-intro-grid article,
   .faq-item {
+    padding: 24px;
+  }
+
+  .action-box {
     padding: 24px;
   }
 
