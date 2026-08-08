@@ -863,6 +863,112 @@ h3 {
   font-weight: 800;
 }
 
+.payment-confirmation {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+}
+
+.payment-confirmation-heading h3,
+.payment-confirmation-heading p {
+  margin: 0;
+}
+
+.payment-confirmation-heading > p:last-child {
+  max-width: 720px;
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.payment-confirmation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.payment-confirmation label > span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--green-dark);
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.payment-confirmation input[type="text"],
+.payment-confirmation input[type="datetime-local"],
+.payment-confirmation input[type="file"] {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px 13px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+
+.payment-confirmation input:focus {
+  border-color: var(--green);
+  outline: 3px solid rgba(30, 107, 85, 0.12);
+}
+
+.payment-confirmation label small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.payment-proof-field {
+  grid-column: 1 / -1;
+}
+
+.payment-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.payment-consent input {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--green);
+}
+
+.payment-consent span {
+  margin: 0;
+  color: var(--muted) !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+}
+
+.payment-confirmation .button {
+  width: 100%;
+  margin-top: 20px;
+  border: 0;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.payment-confirmation .button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.payment-form-status {
+  min-height: 1.5em;
+  margin: 12px 0 0;
+  color: var(--green-dark);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
 .mobile-cta {
   display: none;
 }
@@ -2338,6 +2444,14 @@ details.faq-item > p a {
   .payment-instructions {
     grid-column: 1;
     grid-row: auto;
+  }
+
+  .payment-confirmation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-proof-field {
+    grid-column: 1;
   }
 
   .quiz-handoff {

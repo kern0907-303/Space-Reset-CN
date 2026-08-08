@@ -1,5 +1,8 @@
 const header = document.querySelector("[data-header]");
 
+const PAYMENT_NOTIFY_API =
+  "https://space-reset-payment-notify.ikit178.workers.dev/payments/cn/claim";
+
 const updateHeader = () => {
   if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -67,6 +70,9 @@ if (paymentSelector) {
   const amount = paymentSelector.querySelector("[data-payment-amount]");
   const methodLabel = paymentSelector.querySelector("[data-payment-method-label]");
   const qr = paymentSelector.querySelector("[data-payment-qr]");
+  const confirmationForm = paymentSelector.querySelector("[data-payment-confirmation]");
+  const confirmationSubmit = paymentSelector.querySelector("[data-payment-submit]");
+  const confirmationStatus = paymentSelector.querySelector("[data-payment-form-status]");
 
   let selectedPlan = "home";
   let selectedMethod = "";
@@ -118,6 +124,61 @@ if (paymentSelector) {
       renderPayment();
     });
   });
+
+  const makeOrderId = () => {
+    const now = new Date();
+    const pad = (value) => String(value).padStart(2, "0");
+    const date = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}`;
+    const time = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    const random = Math.random().toString(36).slice(2, 6).toUpperCase().padEnd(4, "0");
+    return `CN-SPACE-${date}-${time}-${random}`;
+  };
+
+  if (confirmationForm) {
+    confirmationForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!confirmationForm.reportValidity()) return;
+      if (!selectedMethod) {
+        confirmationStatus.textContent = "请先选择微信支付或支付宝。";
+        return;
+      }
+
+      const screenshot = confirmationForm.elements.screenshot.files[0];
+      if (!screenshot) {
+        confirmationStatus.textContent = "请上传付款截图。";
+        return;
+      }
+      if (screenshot.size > 5 * 1024 * 1024) {
+        confirmationStatus.textContent = "付款截图超过 5MB，请裁切或压缩后再上传。";
+        return;
+      }
+
+      const orderId = makeOrderId();
+      const body = new FormData(confirmationForm);
+      body.set("order_id", orderId);
+      body.set("plan", selectedPlan);
+      body.set("method", selectedMethod);
+
+      confirmationSubmit.disabled = true;
+      confirmationSubmit.textContent = "正在提交…";
+      confirmationStatus.textContent = "正在提交订单资料与付款截图，请不要关闭页面。";
+
+      try {
+        const response = await fetch(PAYMENT_NOTIFY_API, { method: "POST", body });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok || !payload.ok) throw new Error(payload.error || "submit failed");
+
+        confirmationForm.reset();
+        confirmationStatus.textContent = `提交成功。订单编号：${payload.order_id}。我们会依实际入账核对并联系你。`;
+        confirmationSubmit.textContent = "已提交付款核对";
+      } catch (error) {
+        confirmationStatus.textContent =
+          "暂时无法提交，资料尚未送达。请不要重复支付，稍后再试或直接联系我们核对。";
+        confirmationSubmit.disabled = false;
+        confirmationSubmit.textContent = "已付款，重新提交核对";
+      }
+    });
+  }
 
   renderPayment();
 }

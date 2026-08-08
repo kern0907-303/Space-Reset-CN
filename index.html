@@ -499,10 +499,51 @@
               <ol>
                 <li>确认检测方案与金额正确。</li>
                 <li>使用对应的微信或支付宝扫描收款码。</li>
-                <li>付款完成后保存支付截图，后续与空间资料一并提交。</li>
+                <li>付款完成后保存支付截图，并在下方提交核对。</li>
               </ol>
               <p>收款码为固定金额。请不要自行修改金额，也不要重复支付。</p>
             </div>
+
+            <form class="payment-confirmation" data-payment-confirmation>
+              <div class="payment-confirmation-heading">
+                <p class="eyebrow">04｜提交付款凭证</p>
+                <h3>已经支付？把订单资料和截图交给我们核对。</h3>
+                <p>固定收款码无法自动回传付款状态。送出后我们会依实际入账核对，不会只凭截图认定付款成功。</p>
+              </div>
+
+              <div class="payment-confirmation-grid">
+                <label>
+                  <span>付款人姓名</span>
+                  <input type="text" name="payer_name" maxlength="80" autocomplete="name" required>
+                </label>
+                <label>
+                  <span>微信号／手机号／其他联系方式</span>
+                  <input type="text" name="contact" maxlength="120" autocomplete="tel" required>
+                </label>
+                <label>
+                  <span>微信／支付宝交易单号</span>
+                  <input type="text" name="transaction_no" maxlength="100" inputmode="numeric" required>
+                  <small>请从支付详情复制完整交易单号，方便核对。</small>
+                </label>
+                <label>
+                  <span>付款时间</span>
+                  <input type="datetime-local" name="paid_at">
+                </label>
+                <label class="payment-proof-field">
+                  <span>付款截图</span>
+                  <input type="file" name="screenshot" accept="image/jpeg,image/png,image/webp" required>
+                  <small>支持 JPG、PNG、WebP，最大 5MB。请确认截图能看见金额、时间与交易单号。</small>
+                </label>
+              </div>
+
+              <label class="payment-consent">
+                <input type="checkbox" required>
+                <span>我确认以上资料正确，并同意仅用于本次付款核对、订单联系与服务交付。</span>
+              </label>
+
+              <button type="submit" class="button primary" data-payment-submit>已付款，提交核对</button>
+              <p class="payment-form-status" data-payment-form-status role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </section>
