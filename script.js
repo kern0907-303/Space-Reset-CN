@@ -169,7 +169,7 @@ if (paymentSelector) {
         if (!response.ok || !payload.ok) throw new Error(payload.error || "submit failed");
 
         confirmationForm.reset();
-        confirmationStatus.textContent = `提交成功。订单编号：${payload.order_id}。我们会依实际入账核对并联系你。`;
+        confirmationStatus.textContent = `提交成功。订单编号：${payload.order_id}。请保存编号；我们会依实际入账核对，并由企业微信服务专员联系你。添加后请在同一对话发送空间资料。`;
         confirmationSubmit.textContent = "已提交付款核对";
       } catch (error) {
         confirmationStatus.textContent =
