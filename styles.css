@@ -691,21 +691,16 @@ h3 {
   margin-inline: 0;
 }
 
-.payment-alert {
-  border: 1px solid rgba(183, 110, 69, 0.34);
-  border-left: 5px solid var(--clay);
+.capacity-note {
+  border: 1px solid rgba(64, 108, 91, 0.25);
+  border-left: 5px solid var(--forest);
   border-radius: 8px;
   padding: 20px 22px;
-  background: #fffaf5;
+  background: rgba(64, 108, 91, 0.07);
 }
 
-.payment-alert strong {
-  color: #7d3f21;
-}
-
-.payment-alert p {
-  margin: 6px 0 0;
-  color: var(--muted);
+.capacity-note strong {
+  color: var(--forest);
 }
 
 .payment-step {
@@ -2209,22 +2204,52 @@ details.faq-item > p a {
 }
 
 .site-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  gap: 18px;
   padding: 28px clamp(20px, 6vw, 88px);
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.86rem;
 }
 
-.site-footer strong,
-.site-footer span {
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-main p,
+.footer-disclosure p {
+  margin: 0;
+}
+
+.footer-disclosure {
+  padding-top: 16px;
+  border-top: 1px solid rgba(24, 33, 31, 0.08);
+  color: rgba(75, 86, 82, 0.72);
+  font-size: 0.74rem;
+  line-height: 1.65;
+}
+
+.footer-disclosure strong {
+  display: inline;
+  color: inherit;
+}
+
+.footer-disclosure a {
+  display: inline-block;
+  margin-top: 5px;
+  color: rgba(64, 108, 91, 0.82);
+  text-underline-offset: 3px;
+}
+
+.footer-main strong,
+.footer-main span {
   display: block;
 }
 
-.site-footer strong {
+.footer-main strong {
   color: var(--ink);
 }
 
@@ -2381,6 +2406,11 @@ details.faq-item > p a {
   }
 
   .site-footer {
+    align-items: flex-start;
+  }
+
+  .footer-main {
+    width: 100%;
     align-items: flex-start;
     flex-direction: column;
   }
