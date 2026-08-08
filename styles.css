@@ -678,6 +678,196 @@ h3 {
   scroll-margin-top: 76px;
 }
 
+.payment {
+  background: var(--soft);
+}
+
+.payment-panel {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.payment-panel .section-heading {
+  margin-inline: 0;
+}
+
+.payment-alert {
+  border: 1px solid rgba(183, 110, 69, 0.34);
+  border-left: 5px solid var(--clay);
+  border-radius: 8px;
+  padding: 20px 22px;
+  background: #fffaf5;
+}
+
+.payment-alert strong {
+  color: #7d3f21;
+}
+
+.payment-alert p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.payment-step {
+  margin-top: 30px;
+}
+
+.payment-step-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--clay);
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.payment-options,
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.payment-option,
+.payment-method {
+  width: 100%;
+  min-height: 92px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 20px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.payment-option:hover,
+.payment-method:hover {
+  border-color: rgba(30, 107, 85, 0.5);
+  transform: translateY(-1px);
+}
+
+.payment-option:focus-visible,
+.payment-method:focus-visible {
+  outline: 3px solid rgba(30, 107, 85, 0.22);
+  outline-offset: 2px;
+}
+
+.payment-option.is-active,
+.payment-method.is-active {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(30, 107, 85, 0.12);
+}
+
+.payment-option strong,
+.payment-option small,
+.payment-method span,
+.payment-method small {
+  display: block;
+}
+
+.payment-option strong,
+.payment-method span {
+  font-weight: 900;
+}
+
+.payment-option small,
+.payment-method small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.payment-method.wechat.is-active {
+  border-color: #07c160;
+  box-shadow: 0 0 0 3px rgba(7, 193, 96, 0.12);
+}
+
+.payment-method.alipay.is-active {
+  border-color: #1677ff;
+  box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.12);
+}
+
+.payment-result {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+  gap: 24px 32px;
+  margin-top: 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.payment-result[hidden] {
+  display: none;
+}
+
+.payment-result img {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: auto;
+  max-width: 380px;
+  justify-self: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.payment-summary {
+  grid-column: 2;
+  align-self: end;
+}
+
+.payment-summary h3,
+.payment-summary p {
+  margin: 0;
+}
+
+.payment-summary > strong {
+  display: block;
+  margin: 10px 0;
+  color: var(--green-dark);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+}
+
+.payment-summary > p:last-child {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.payment-instructions {
+  grid-column: 2;
+}
+
+.payment-instructions h3,
+.payment-instructions p {
+  margin: 0;
+}
+
+.payment-instructions ol {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.payment-instructions p {
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: var(--soft);
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
 .mobile-cta {
   display: none;
 }
@@ -2110,6 +2300,19 @@ details.faq-item > p a {
   .action-box {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .payment-options,
+  .payment-methods,
+  .payment-result {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-result img,
+  .payment-summary,
+  .payment-instructions {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .quiz-handoff {

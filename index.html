@@ -33,7 +33,7 @@
         <a href="#mechanism">为什么会反复</a>
         <a href="#device">怎么判断</a>
         <a href="#offer">费用</a>
-        <a href="#upload" class="nav-cta">开始检测</a>
+        <a href="#payment" class="nav-cta">选择支付方式</a>
       </nav>
     </header>
 
@@ -292,8 +292,8 @@
         <div class="simple-steps" role="group" aria-label="Space Reset 三步骤">
           <article>
             <span>01</span>
-            <h3>准备空间资料</h3>
-            <p>准备现状说明、面积、空间照片和平面图。正式申请入口开放后，提交大约需要5分钟。</p>
+            <h3>准备资料，确认设备排期</h3>
+            <p>准备现状说明、面积、空间照片和平面图，并先确认当前设备排期。</p>
           </article>
           <article>
             <span>02</span>
@@ -327,7 +327,7 @@
               <li>下一步怎么走</li>
               <li>正式排入后3个工作日内收到</li>
             </ul>
-            <a class="button primary" href="#upload" data-upload-trigger>查看住宅检测申请｜¥588</a>
+            <a class="button primary" href="#payment" data-plan-select="home">选择住宅检测｜¥588</a>
           </article>
 
           <article class="inspection-card">
@@ -341,7 +341,7 @@
               <li>下一步怎么走</li>
               <li>正式排入后3个工作日内收到</li>
             </ul>
-            <a class="button primary" href="#upload" data-upload-trigger>查看商业检测申请｜¥888</a>
+            <a class="button primary" href="#payment" data-plan-select="business">选择商业检测｜¥888</a>
           </article>
         </div>
 
@@ -349,7 +349,7 @@
           <span class="guarantee-seal" aria-hidden="true">交付</span>
           <div>
             <h3>正式进入设备排期后，3个工作日内交付。</h3>
-            <p>资料不足时会先联系补充；尚未进入设备排期前不会开始计算交付时间。中国大陆站的支付与退款规则，以正式申请页面公布内容为准。</p>
+            <p>资料不足时会先联系补充；尚未进入设备排期前不会开始计算交付时间。付款前请先确认设备排期，退款与交付约定以付款前双方确认内容为准。</p>
           </div>
         </div>
 
@@ -368,7 +368,7 @@
             <h3>每个项目都要在 TimeWaver 系统中单独设置，传输容量有实际上限。</h3>
             <p>这不是可以无限复制的在线内容。同一时间能够承接的项目数量有限；支付完成、资料确认齐全后按顺序排期，满额后进入候补名单。</p>
           </div>
-          <a class="button primary" href="#upload" data-upload-trigger>查看中国大陆申请进度</a>
+          <a class="button primary" href="#payment">选择方案与支付方式</a>
         </div>
       </section>
 
@@ -402,7 +402,7 @@
           </details>
           <details class="faq-item">
             <summary>支付和退款怎么处理？</summary>
-            <p>中国大陆的支付、客服与退款渠道正在配置中。正式开放后，申请页面会在支付前完整说明价格、退款条件与交付方式；目前页面不会收集资料或要求支付。</p>
+            <p>网站提供微信支付与支付宝固定金额收款码。付款前请先确认检测方案、金额与设备排期；付款后请保存支付截图。退款与交付约定以付款前双方确认内容为准。</p>
           </details>
           <details class="faq-item">
             <summary>为什么使用设备后还需要人工判断？</summary>
@@ -434,7 +434,7 @@
           </details>
           <details class="faq-item">
             <summary>超过约300平方米怎么收费？</summary>
-            <p>大型、多楼层或复合式空间需要先查看资料、评估范围，不适用固定价格。正式渠道开放后，会先确认费用与交付方式，再决定是否支付。</p>
+            <p>大型、多楼层或复合式空间需要先查看资料、评估范围，不适用¥588或¥888固定价格。请先确认费用与交付方式，不要直接扫描固定金额收款码。</p>
           </details>
           <details class="faq-item">
             <summary>照片和平面图会被公开吗？</summary>
@@ -447,25 +447,77 @@
         <div class="section-heading">
           <p class="eyebrow">下一步</p>
           <h2>别再猜了。先找出最值得处理的位置。</h2>
-          <p>中国大陆申请渠道开放后，提交资料约需5分钟；支付完成、资料确认齐全后进入设备排期，正式排入后3个工作日内交付报告。</p>
-          <a class="button primary" href="#upload" data-upload-trigger>查看中国大陆申请进度</a>
+          <p>先选择检测方案与支付方式，再显示对应金额的收款码。付款前请先确认设备排期。</p>
+          <a class="button primary" href="#payment">选择方案与支付方式</a>
         </div>
       </section>
 
       <span id="quiz" class="legacy-anchor" aria-hidden="true"></span>
-      <section class="section upload" id="upload">
-        <div class="upload-panel">
-          <p class="eyebrow">中国大陆申请进度</p>
-          <h2>资料提交、支付与客服渠道正在配置中。</h2>
-          <p>住宅空间检测¥588；商业空间检测¥888。超过约300平方米、多楼层或复合式空间，需要先评估范围。</p>
-          <p class="form-status">
-            当前页面不会收集你的姓名、联系方式、照片或平面图，也不会要求支付。正式开放后，这里会提供中国大陆适用的资料提交、隐私告知、支付、退款与客服入口。
-          </p>
+      <span id="upload" class="legacy-anchor" aria-hidden="true"></span>
+      <section class="section payment" id="payment">
+        <div class="payment-panel" data-payment-selector>
+          <div class="section-heading">
+            <p class="eyebrow">中国大陆支付</p>
+            <h2>先选检测方案，再选支付方式。</h2>
+            <p>选择后才会显示对应金额的收款码，避免支付错金额。</p>
+          </div>
+
+          <div class="payment-alert" role="note">
+            <strong>付款前请先确认设备排期。</strong>
+            <p>如果你还没有与我们取得联系、确认资料与当前排期，请先不要支付。超过约300平方米、多楼层或复合式空间，也不要直接扫描下方固定金额收款码。</p>
+          </div>
+
+          <div class="payment-step">
+            <span class="payment-step-label">01｜选择检测方案</span>
+            <div class="payment-options" role="group" aria-label="选择检测方案">
+              <button type="button" class="payment-option is-active" data-plan-select="home" aria-pressed="true">
+                <strong>住宅空间检测</strong>
+                <small>约300平方米以内｜¥588</small>
+              </button>
+              <button type="button" class="payment-option" data-plan-select="business" aria-pressed="false">
+                <strong>商业空间检测</strong>
+                <small>约300平方米以内｜¥888</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="payment-step">
+            <span class="payment-step-label">02｜选择支付方式</span>
+            <div class="payment-methods" role="group" aria-label="选择支付方式">
+              <button type="button" class="payment-method wechat" data-payment-method="wechat" aria-pressed="false">
+                <span>微信支付</span>
+                <small>选择后显示微信收款码</small>
+              </button>
+              <button type="button" class="payment-method alipay" data-payment-method="alipay" aria-pressed="false">
+                <span>支付宝</span>
+                <small>选择后显示支付宝收款码</small>
+              </button>
+            </div>
+          </div>
+
+          <div class="payment-result" data-payment-result hidden aria-live="polite">
+            <div class="payment-summary">
+              <p class="eyebrow">03｜核对付款信息</p>
+              <h3 data-payment-title>住宅空间检测</h3>
+              <strong data-payment-amount>¥588</strong>
+              <p data-payment-method-label>请选择支付方式</p>
+            </div>
+            <img data-payment-qr src="./assets/wechat-home-588.jpeg" alt="住宅空间检测微信支付收款码" width="828" height="1124">
+            <div class="payment-instructions">
+              <h3>付款前再核对一次</h3>
+              <ol>
+                <li>确认方案、金额和设备排期都正确。</li>
+                <li>使用对应的微信或支付宝扫描收款码。</li>
+                <li>付款完成后保存支付截图，后续与空间资料一并提交。</li>
+              </ol>
+              <p>收款码为固定金额。请不要自行修改金额，也不要重复支付。</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <a class="mobile-cta" href="#upload" data-upload-trigger>查看申请进度</a>
+    <a class="mobile-cta" href="#payment">选择支付方式</a>
 
     <footer class="site-footer">
       <div>
